@@ -10,4 +10,16 @@
   background: none;
   box-sizing: border-box;
   font-family: 'Roboto', 'sans-serif';
+  text-decoration: none;
+}
+.main {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  height: 100%;
+}
+#app {
+  background: var(--home-background);
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr;
 }

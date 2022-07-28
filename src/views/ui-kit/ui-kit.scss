@@ -1,8 +1,6 @@
 .ui-kit {
   display: flex;
   flex-direction: column;
-  background: var(--home-background);
-  min-height: 100vh;
   &__item {
     padding: 20px;
     margin-bottom: 20px;

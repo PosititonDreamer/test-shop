@@ -29,4 +29,4 @@ export default {
   }
 }
 </script>
-<style lang="scss" src="./button.scss" scoped />
+<style lang="scss" src="./v-button.scss" scoped />

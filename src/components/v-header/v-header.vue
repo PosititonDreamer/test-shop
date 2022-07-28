@@ -14,7 +14,7 @@
 import logo from "@/assets/img/svg/header/logo.svg"
 import cart  from "@/assets/img/svg/header/cart.svg"
 
-import navigation from "@/components/header/navigation/navigation";
+import navigation from "@/components/v-header/navigation/navigation";
 
 export default {
   name: "headerVue",
@@ -23,4 +23,4 @@ export default {
   }
 }
 </script>
-<style lang="scss" src="./header.scss" scoped  />
+<style lang="scss" src="./v-header.scss" scoped  />
