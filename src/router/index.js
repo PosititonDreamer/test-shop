@@ -9,7 +9,21 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: home
+    component: home,
+    children: [
+        {
+          path: ':id',
+          name: "category",
+          component: home,
+          children: [
+            {
+              path: ':subId',
+                name: 'subCategory',
+                component: home
+            }
+          ]
+        }
+    ]
   },
   {
     path: '/ui-kit',

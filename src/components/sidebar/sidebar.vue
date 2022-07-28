@@ -2,22 +2,28 @@
   <div class="sidebar">
     <nav class="sidebar-nav">
       <ul class="sidebar-nav__list">
-        <li class="sidebar-nav__item sidebar-nav__item--active">
-          <a href="" class="sidebar-nav__link  ">Стулья</a>
-        </li>
-        <li class="sidebar-nav__item">
-          <a href="" class="sidebar-nav__link">Диваны</a>
-        </li>
-        <li class="sidebar-nav__item ">
-          <a href="" class="sidebar-nav__link">Столы</a>
+        <li v-for="category in subCategories" :class="[['sidebar-nav__item'], {'sidebar-nav__item--active': category.id === Number($route.params.subId)}]" >
+          <router-link class="sidebar-nav__link" tag="a" :to="forwardLink(category)"> {{category.name}} </router-link>
         </li>
       </ul>
     </nav>
   </div>
 </template>
 <script>
+import {mapGetters} from 'vuex'
 export default {
-  name: 'sidebar'
+  name: 'sidebar',
+  computed: {
+    ...mapGetters(['getSubCategories']),
+    subCategories() {
+      return this.getSubCategories.filter(item => item.parent_id === Number(this.$route.params.id))
+    },
+  },
+  methods: {
+    forwardLink(category) {
+      return '/' + this.$route.params.id + '/' +  String(category.id)
+    }
+  }
 }
 </script>
 <style lang="scss" src="./sidebar.scss" scoped/>
