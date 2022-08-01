@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     forwardLink(category) {
-      return '/' + this.$route.params.id + '/' +  String(category.id)
+      return {name: 'subCategory', params: {subId: category.id}}
     }
   }
 }

@@ -4,22 +4,21 @@
       <logo/>
     </div>
     <navigation />
-    <div class="header-cart">
-      <cart/>
-      <span class="header-cart__count">10</span>
-    </div>
+    <basket @openBasket="$emit('openBasket')" />
   </header>
 </template>
 <script>
-import logo from "@/assets/img/svg/header/logo.svg"
-import cart  from "@/assets/img/svg/header/cart.svg"
-
+// components
 import navigation from "@/components/v-header/navigation/navigation";
+import basket from "@/components/v-header/basket/basket";
+
+// svg
+import logo from "@/assets/img/svg/header/logo.svg"
 
 export default {
   name: "headerVue",
   components: {
-    logo, cart, navigation
+    logo, basket, navigation
   }
 }
 </script>

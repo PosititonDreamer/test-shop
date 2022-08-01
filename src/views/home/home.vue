@@ -14,27 +14,42 @@ import {mapGetters} from 'vuex'
 export default {
   name: 'home',
   data: ()=>({
-    error: false
+    error: false,
   }),
   computed: {
     ...mapGetters(['getCategories', 'getSubCategories'])
   },
-  mounted() {
-    if (!this.$route.params.id || !this.$route.params.subId) {
-      let category = Number( this.$route.params.id);
-      let subCategory = Number( this.$route.params.subId);
-      if (category && !subCategory) {
+  methods: {
+    forwardLinkEmpty() {
+      let category = this.getCategories[0];
+      let subCategory = this.getSubCategories.find(item => item.parent_id === category.id)
 
-        let subCategories = this.getSubCategories.filter(item=>item.parent_id === category)
-        if(subCategories.length) {
-          subCategory = subCategories[0].id
-          this.$router.push('/' + category + '/' + subCategory)
-        } else this.error = true
-      } else {
-        category = this.getCategories[0].id
-        subCategory = this.getSubCategories.find(item=> item.parent_id === category)
-        this.$router.push('/'+ category + '/' + subCategory)
+      this.$router.push({name: 'subCategory', params: {id: category.id, subId: subCategory.id}} )
+    },
+    forwardLinkSubCategory() {
+      let category = this.getCategories.find(item=> item.id === Number(this.$route.params.id))
+      let subCategory = this.getSubCategories.find(item => item.parent_id === category.id)
+      this.$router.push({name: 'subCategory', params: { subId: subCategory.id}} )
+
+    },
+    forwardLinkError() {
+      this.$router.push({name: 'errorCategory'})
+    },
+    trackRoute() {
+      if(this.$route.name === 'home') this.forwardLinkEmpty()
+      if(this.$route.name === 'category') {
+        let category = this.getCategories.find(item=> item.id === Number(this.$route.params.id))
+        if(category) this.forwardLinkSubCategory()
+        else this.forwardLinkError()
       }
+    },
+  },
+  mounted() {
+    this.trackRoute()
+  },
+  watch: {
+    $route() {
+      this.trackRoute()
     }
   }
 }

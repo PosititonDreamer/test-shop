@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import home from '@/views/home/home'
+import errorCategory from '@/views/home/errorCategory/errorCategory'
 import uiKit from '@/views/ui-kit/ui-kit'
 
 Vue.use(VueRouter)
@@ -11,18 +12,21 @@ const routes = [
     name: 'home',
     component: home,
     children: [
-        {
-          path: ':id',
-          name: "category",
-          component: home,
-          children: [
-            {
-              path: ':subId',
-                name: 'subCategory',
-                component: home
-            }
-          ]
-        }
+      {
+        path: 'category-:id',
+        name: 'category',
+        children: [
+          {
+            path: 'subCategory-:subId',
+            name: 'subCategory'
+          },
+          {
+            path: 'error',
+            name: 'errorCategory',
+            component: errorCategory
+          }
+        ]
+      }
     ]
   },
   {
