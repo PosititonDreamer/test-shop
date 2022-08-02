@@ -26,7 +26,7 @@ export default {
     popupType: null
   }),
   methods: {
-    ...mapActions(['searchData']),
+    ...mapActions(['searchData', 'searchBasket']),
     closePopup() {
       this.popup = this.popupType = null
     },
@@ -40,6 +40,7 @@ export default {
   },
   mounted() {
     this.searchData()
+    this.searchBasket()
   },
   components: {
     Popup,

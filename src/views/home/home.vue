@@ -3,13 +3,14 @@
       <template v-if="error">
         НИХУЯ НЕТ
       </template>
-    <template v-else-if="!error && getSubCategories.length">
-      {{getSubCategories}}
-    </template>
+    <catalog v-else-if="!error && getSubCategories.length">
+
+    </catalog>
   </section>
 </template>
 <script>
 import {mapGetters} from 'vuex'
+import catalog from '@/components/catalog/catalog'
 
 export default {
   name: 'home',
@@ -51,7 +52,11 @@ export default {
     $route() {
       this.trackRoute()
     }
+  },
+  components: {
+    catalog
   }
+
 }
 </script>
 <style lang="scss" src="./home.scss" scoped />
