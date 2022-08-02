@@ -1,5 +1,12 @@
 <template>
-  <button :class="buttonClass" :type="type" @click="$emit('click')" :disabled="disabled"><slot/></button>
+  <button :class="buttonClass" :type="type" @click="$emit('click')" :disabled="disabled">
+    <slot />
+    <div class="button__loading" v-if="loading">
+      <span/>
+      <span/>
+      <span/>
+    </div>
+  </button>
 </template>
 <script>
 export default {

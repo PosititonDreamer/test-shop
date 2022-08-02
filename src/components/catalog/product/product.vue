@@ -6,7 +6,7 @@
     <div class="product__content">
       <p class="product__name">{{product.name}}</p>
       <strong class="product__price">{{ product.price.toLocaleString()}} ₽</strong>
-      <vButton class="product__button" @click="updateBasket">
+      <vButton class="product__button" @click="updateBasket" :loading="loading" :disabled="loading">
         <template v-if="productInBasket">
           В корзине
           <arrow />
@@ -28,6 +28,9 @@ import arrow from '@/assets/img/svg/catalog/arrow.svg'
 
 export default {
   name: 'product',
+  data: ()=> ({
+    loading: false
+  }),
   props: {
     product: {
       type: Object,
@@ -37,8 +40,21 @@ export default {
   methods: {
     ...mapActions(['addProduct', 'removeProduct']),
     updateBasket() {
-      this.product.inBasket ? this.removeProduct(this.product) : this.addProduct(this.product)
-      this.product.inBasket = !this.product.inBasket
+      this.loading = true
+      if(this.product.inBasket) {
+        this.removeProduct(this.product).then(result=> {
+          this.product.inBasket = !this.product.inBasket
+        }).finally(result=> {
+          this.loading = false
+        })
+      } else {
+        this.addProduct(this.product).then(result=>{
+          this.product.inBasket = !this.product.inBasket
+        }).finally(result=> {
+          this.loading = false
+        })
+      }
+
     }
   },
   computed: {
