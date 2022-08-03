@@ -2,7 +2,7 @@
   <div class="catalog">
     <div :class="classList">
       <template v-if="productsList.length">
-        <product  v-for="product in productsList" :key="product.id" :product="product" />
+        <product  v-for="product in productsList" :key="product.id" :product="product" @openProduct="$emit('openProduct', $event)"/>
       </template>
       <template v-else>
         <cart class="catalog__image" />

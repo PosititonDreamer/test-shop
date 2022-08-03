@@ -24,7 +24,6 @@ export default {
                     basket = JSON.parse(basket).filter(item => item.id !== product.id)
                     localStorage.setItem('basket', JSON.stringify(basket))
                     commit('setBasket', basket)
-
                     resolve(true)
                     clearTimeout(timeout)
                 }, 2000)

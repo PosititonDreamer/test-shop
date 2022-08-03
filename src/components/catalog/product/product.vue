@@ -1,12 +1,12 @@
 <template>
   <div class="product">
-    <div class="product__image">
+    <div class="product__image" @click="$emit('openProduct', product.id)">
       <img :src="product.img" alt="">
     </div>
     <div class="product__content">
-      <p class="product__name">{{product.name}}</p>
+      <p class="product__name" @click="$emit('openProduct', product.id)">{{product.name}}</p>
       <strong class="product__price">{{ product.price.toLocaleString()}} ₽</strong>
-      <vButton class="product__button" @click="updateBasket" :loading="loading" :disabled="loading">
+      <vButton class="product__button" @click="updateBasket(product)" :loading="loading" :disabled="loading">
         <template v-if="productInBasket">
           В корзине
           <arrow />
@@ -38,18 +38,18 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['addProduct', 'removeProduct']),
-    updateBasket() {
+    ...mapActions(['addProduct', 'removeProduct', 'productStatus']),
+    updateBasket(product) {
       this.loading = true
       if(this.product.inBasket) {
-        this.removeProduct(this.product).then(result=> {
-          this.product.inBasket = !this.product.inBasket
+        this.removeProduct(product).then(result=> {
+          this.productStatus(product.id)
         }).finally(result=> {
           this.loading = false
         })
       } else {
-        this.addProduct(this.product).then(result=>{
-          this.product.inBasket = !this.product.inBasket
+        this.addProduct(product).then(result=>{
+          this.productStatus(product.id)
         }).finally(result=> {
           this.loading = false
         })

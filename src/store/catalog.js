@@ -36,8 +36,10 @@ export default {
                 .catch(error => {
                     console.log(error)
                 })
+        },
+        productStatus({commit}, product) {
+            commit('setProductStatus', product)
         }
-
     },
     mutations: {
         setCategories(state, data) {
@@ -49,6 +51,12 @@ export default {
         setProducts(state, data) {
             state.products = data
         },
+        setProductStatus(state, id) {
+            state.products.map(item=> {
+                if(item.id === id) item.inBasket = !item.inBasket
+                return item
+            })
+        }
     },
     getters: {
         getCategories(state) {

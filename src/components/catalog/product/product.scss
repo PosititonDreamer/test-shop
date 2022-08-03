@@ -41,4 +41,11 @@
       margin-left: 5px;
     }
   }
+  &__image, &__name {
+    cursor: pointer;
+    transition: 0.4s;
+    &:hover {
+      opacity: 0.89;
+    }
+  }
 }

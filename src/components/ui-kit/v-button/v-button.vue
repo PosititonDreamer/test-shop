@@ -26,12 +26,17 @@ export default {
       type: Boolean,
       required: false,
       default: false
+    },
+    color: {
+      type: String,
+      required: false,
+      default: ''
     }
 
   },
   computed: {
     buttonClass() {
-      return ['button', {'button--loaded': this.loading}]
+      return ['button', 'button--' + this.color, {'button--loaded': this.loading}]
     }
   }
 }
