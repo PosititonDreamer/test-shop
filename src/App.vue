@@ -33,7 +33,7 @@ import popupProduct from '@/components/popup/product/product'
 import popupBasket from '@/components/popup/basket/basket'
 
 //layouts
-import layoutDefault from '@/layouts/default'
+import layoutDefault from '@/layouts/default/default'
 import layoutCatalog from '@/layouts/catalog/catalog'
 import layoutError from '@/layouts/error/error'
 
