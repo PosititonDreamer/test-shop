@@ -7,7 +7,7 @@
       <p class="product__name" @click="$emit('openProduct', product.id)">{{product.name}}</p>
       <strong class="product__price">{{ product.price.toLocaleString()}} ₽</strong>
       <vButton class="product__button" @click="updateBasket(product)" :loading="loading" :disabled="loading">
-        <template v-if="productInBasket">
+        <template v-if="product.inBasket">
           В корзине
           <arrow />
         </template>
@@ -55,11 +55,6 @@ export default {
         })
       }
 
-    }
-  },
-  computed: {
-    productInBasket() {
-      return this.product.inBasket
     }
   },
   components: {

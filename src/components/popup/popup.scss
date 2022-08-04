@@ -8,10 +8,10 @@
   display: flex;
   justify-content: flex-end;
   height: 100%;
+  z-index: 1000;
   &__wrapper {
     width: 633px;
     height: 100%;
-    padding: 30px;
     transform: translateX(0);
     background: var(--white);
     animation: openPopup 0.4s linear;
@@ -21,17 +21,21 @@
       animation: closePopup 0.4s linear;
       transform: translateX(100%);
     }
+
+    padding-bottom: 30px;
   }
   &__content {
     height: 100%;
     overflow: hidden auto;
     width: 100%;
+    padding: 0 30px;
   }
   &__heading {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 25px;
+    padding: 30px 30px 0 30px ;
   }
   &__title {
     font-size: 18px;

@@ -1,0 +1,58 @@
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.input {
+  border: 1px solid var(--border-input);
+  border-radius: 5px;
+  padding: 12px 14px 10px;
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--black);
+  transition: 0.4s;
+  width: 100%;
+  &--error {
+    border-color: var(--akcent-color);
+    animation: inputError 0.4s linear;
+  }
+  &__name {
+    font-size: 16px;
+    line-height: 19px;
+    color: var(--black);
+    margin-bottom: 7px;
+  }
+  &__error {
+    color: transparent;
+    pointer-events: unset;
+    font-size: 14px;
+    line-height: 16px;
+    transition: 0.4s;
+    user-select: none;
+    &--view {
+      user-select: unset;
+      pointer-events: auto;
+      color: var(--akcent-color);
+    }
+  }
+}
+@keyframes inputError {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(4px);
+  }
+  40% {
+    transform: translateX(-4px);
+  }
+  60% {
+    transform: translateX(2px);
+  }
+  80% {
+    transform: translateX(-2px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

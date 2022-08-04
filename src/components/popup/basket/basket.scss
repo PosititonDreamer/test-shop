@@ -1,7 +1,30 @@
 .basket {
+  &__list {
+    min-height: 426px;
+  }
   &__item {
     &:not(:last-child) {
       border-bottom: 1px solid var(--border-product-basket);
     }
   }
+}
+.order-placed, .basket--empty {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 700;
+  color: var(--text-color);
+}
+.order-placed svg {
+  width: 140px;
+  transform: translateX(42.5px);
+  margin-bottom: 21px;
+}
+.basket--empty svg {
+  width: 99px;
+  margin-bottom: 26px;
 }

@@ -11,15 +11,19 @@
   box-sizing: border-box;
   font-family: 'Roboto', 'sans-serif';
   text-decoration: none;
+  outline: none;
 }
+
 body {
   overflow-x: hidden;
 }
+
 .main {
   display: grid;
   grid-template-columns: auto 1fr;
   height: 100%;
 }
+
 #app {
   background: var(--home-background);
   min-height: 100vh;

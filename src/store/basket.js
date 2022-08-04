@@ -1,11 +1,13 @@
 export default {
     state: {
         basket: []
-    }, actions: {
+    },
+    actions: {
         searchBasket({commit}) {
             let basket = localStorage.getItem('basket')
             if (basket) commit('setBasket', JSON.parse(basket))
-        }, addProduct({commit}, product) {
+        },
+        addProduct({commit}, product) {
             return new Promise((resolve, reject) => {
                 let timeout = setTimeout(() => {
                     let basket = localStorage.getItem('basket')
@@ -17,7 +19,8 @@ export default {
                 }, 2000)
 
             })
-        }, removeProduct({commit}, product) {
+        },
+        removeProduct({commit}, product) {
             return new Promise((resolve, reject) => {
                 let timeout = setTimeout(() => {
                     let basket = localStorage.getItem('basket')
@@ -29,12 +32,35 @@ export default {
                 }, 2000)
 
             })
+        },
+        addOrder({commit}, data) {
+            return new Promise((resolve, reject) => {
+
+                let timeout = setTimeout(() => {
+                    let orders = localStorage.getItem('orders')
+                    let newOrder = {user: data, products: this.state.basket.basket}
+                    orders = orders? [...JSON.parse(orders), newOrder] : [newOrder]
+                    localStorage.setItem('orders', JSON.stringify(orders))
+                    localStorage.removeItem('basket')
+                    resolve(true)
+                    clearTimeout(timeout)
+                }, 2000)
+            })
+        },
+        clearBasket({commit}) {
+            commit('clearBasket')
         }
-    }, mutations: {
+    },
+    mutations: {
         setBasket(state, data) {
             state.basket = data
+        },
+        clearBasket(state) {
+            this.state.catalog.products.forEach(item=> item.inBasket = false)
+            state.basket = []
         }
-    }, getters: {
+    },
+    getters: {
         getBasket(state) {
             return state.basket
         }

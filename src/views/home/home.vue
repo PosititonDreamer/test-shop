@@ -22,14 +22,12 @@ export default {
     forwardLinkEmpty() {
       let category = this.getCategories[0];
       let subCategory = this.getSubCategories.find(item => item.parent_id === category.id)
-
       this.$router.push({name: 'subCategory', params: {id: category.id, subId: subCategory.id}} )
     },
     forwardLinkSubCategory() {
       let category = this.getCategories.find(item=> item.id === Number(this.$route.params.id))
       let subCategory = this.getSubCategories.find(item => item.parent_id === category.id)
       this.$router.push({name: 'subCategory', params: { subId: subCategory.id}} )
-
     },
     forwardLinkError() {
       this.$router.push({name: 'errorCategory'})
