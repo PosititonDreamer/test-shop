@@ -1,7 +1,7 @@
 <template>
   <button class="basket" @click="$emit('openBasket')">
     <cart/>
-    <span class="basket__count">{{ getBasket.length }}</span>
+    <span class="basket__count" v-if="getBasket.length">{{ getBasket.length }}</span>
   </button>
 </template>
 <script>

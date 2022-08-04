@@ -1,9 +1,6 @@
 <template>
   <section class="home">
-      <template v-if="error">
-        НИХУЯ НЕТ
-      </template>
-    <catalog v-else-if="!error && getSubCategories.length" @openProduct="$emit('openProduct', $event)" />
+    <catalog @openProduct="$emit('openProduct', $event)" />
   </section>
 </template>
 <script>
