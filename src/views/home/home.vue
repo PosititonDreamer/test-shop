@@ -26,15 +26,22 @@ export default {
       let subCategory = this.getSubCategories.find(item => item.parent_id === category.id)
       this.$router.push({name: 'subCategory', params: { subId: subCategory.id}} )
     },
-    forwardLinkError() {
-      this.$router.push({name: 'errorCategory'})
+    forwardLinkError(text) {
+      this.$router.push({name: 'error', params: {text: text}})
     },
     trackRoute() {
       if(this.$route.name === 'home') this.forwardLinkEmpty()
       if(this.$route.name === 'category') {
         let category = this.getCategories.find(item=> item.id === Number(this.$route.params.id))
         if(category) this.forwardLinkSubCategory()
-        else this.forwardLinkError()
+        else this.forwardLinkError("Данная категория не найдена")
+      }
+      if(this.$route.name === 'subCategory') {
+        let category = this.getCategories.find(item=> item.id === Number(this.$route.params.id))
+        let subCategory = this.getSubCategories.find(item=> item.id === Number(this.$route.params.subId))
+        if(!category && subCategory) this.forwardLinkError("Данная категория не найдена")
+        else if (!category && !subCategory) this.forwardLinkError("Данная категория и подкатегория не найдены")
+        else if(category && !subCategory) this.forwardLinkError("Данная подкатегория не найдена")
       }
     },
   },

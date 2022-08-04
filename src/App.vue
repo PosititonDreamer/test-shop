@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+
     <template v-if="loading">
 
     </template>
@@ -19,7 +20,6 @@
         />
       </popup>
     </template>
-
   </div>
 </template>
 <script>

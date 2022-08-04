@@ -42,12 +42,12 @@ const routes = [
     }
   },
   {
-    path: '/error',
+    path: '*',
     name: 'error',
     component: error,
+    props: true,
     meta: {
       layout: 'layout-error',
-      text: 'Вы кто такие! я вас не звал! идите нахуй! (данная страница не найдена)'
     }
   }
 ]

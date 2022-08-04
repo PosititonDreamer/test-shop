@@ -1,14 +1,16 @@
 <template>
-  <strong class="error-text">{{errorText}}</strong>
+  <strong class="error-text">{{text}}</strong>
 </template>
 <script>
 export default {
   name: 'error',
-  computed: {
-    errorText() {
-      return this.$route.meta.text
+  props: {
+    text: {
+      type: String,
+      required: false,
+      default: "Данная страница не найдена"
     }
-  }
+  },
 }
 </script>
 <style lang="scss" src="./error.scss" scoped />
