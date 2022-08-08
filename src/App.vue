@@ -2,7 +2,7 @@
   <div id="app">
 
     <template v-if="loading">
-
+      <loader-circle />
     </template>
     <template v-else>
       <v-header @openBasket="openPopup('popupBasket','Оформить заказ')"/>
@@ -31,6 +31,8 @@ import vHeader from "@/components/v-header/v-header"
 import Popup from "@/components/popup/popup";
 import popupProduct from '@/components/popup/product/product'
 import popupBasket from '@/components/popup/basket/basket'
+import loaderCircle from "@/components/ui-kit/loader/loader-circle/loader-circle";
+import loaderDnk from "@/components/ui-kit/loader/loader-dnk/loader-dnk";
 
 //layouts
 import layoutDefault from '@/layouts/default/default'
@@ -62,12 +64,16 @@ export default {
     }
   },
   async mounted() {
+    console.log(window.innerWidth)
+    console.log(window.innerHeight)
     await this.searchData()
     await this.searchBasket()
-    this.loading = false
+    let timeout = setTimeout(()=> {
+      this.loading = false
+    }, 5000)
   },
   components: {
-    Popup, vHeader,  popupProduct, popupBasket,layoutDefault ,layoutCatalog ,layoutError
+    Popup, vHeader,  popupProduct, popupBasket,layoutDefault ,layoutCatalog ,layoutError, loaderCircle, loaderDnk
   }
 }
 </script>

@@ -1,0 +1,88 @@
+$dot-count: 26;
+$dot-size: 20px;
+$dot-space: 25px;
+$dot-start: (($dot-count / 2 + 1) * ($dot-size + $dot-space)) / 2;
+
+$animation-time: 2s;
+$animation-distance: 50px;
+
+.loader-dnk {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  &__item {
+    position: absolute;
+    height: #{$dot-size};
+    width: #{$dot-size};
+    opacity: 1;
+    top: -50%;
+    transform: translateY(-50%) scale(1);
+    animation: dotMove $animation-time infinite ease-in-out;
+    @for $i from 1 through $dot-count {
+      $dot-move: ceil($i / 2);
+      $dot-pos: $dot-start - (($dot-size + $dot-space) * $dot-move);
+
+      $animation-delay: -#{$i * .1}s;
+      @if $i % 2 == 0 {
+        $animation-delay: -#{($i * .1) + ($animation-time / 2)};
+      }
+
+      &:nth-of-type(#{$i}) {
+        animation-delay: $animation-delay;
+        left: $dot-pos;
+        &::before {
+          animation-delay: $animation-delay;
+        }
+      }
+    }
+    &::before {
+      animation: dotOpacity $animation-time infinite ease-in-out;
+      content: '';
+      display: block;
+      height: 100%;
+      width: 100%;
+      border-radius: 50%;
+      background: black;
+    }
+    &:nth-child(even)::before {
+      background: var(--akcent-color);
+    }
+  }
+}
+
+@keyframes dotMove {
+  0% {
+    transform: translate3d(0, -#{$animation-distance}, 0);
+    z-index: 0;
+  }
+  50% {
+    transform: translate3d(0, #{$animation-distance}, 0);
+    z-index: 10;
+  }
+  100% {
+    transform: translate3d(0, -#{$animation-distance}, 0);
+    z-index: -5;
+  }
+}
+
+@keyframes dotOpacity {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.5);
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: .35;
+    transform: scale(.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

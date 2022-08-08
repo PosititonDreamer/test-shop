@@ -1,8 +1,6 @@
 <template>
   <header class="header">
-    <div class="logo">
-      <logo/>
-    </div>
+    <router-link class="logo" :to="{name: 'home'}" tag="a" ><logo/></router-link>
     <navigation />
     <basket @openBasket="$emit('openBasket')" />
   </header>
