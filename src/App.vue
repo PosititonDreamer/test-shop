@@ -1,8 +1,8 @@
 <template>
-  <div id="app">
+  <div id="app" :class="classApp">
 
     <template v-if="loading">
-      <loader-circle />
+      <loader-dnk />
     </template>
     <template v-else>
       <v-header @openBasket="openPopup('popupBasket','Оформить заказ')"/>
@@ -31,8 +31,8 @@ import vHeader from "@/components/v-header/v-header"
 import Popup from "@/components/popup/popup";
 import popupProduct from '@/components/popup/product/product'
 import popupBasket from '@/components/popup/basket/basket'
-import loaderCircle from "@/components/ui-kit/loader/loader-circle/loader-circle";
-import loaderDnk from "@/components/ui-kit/loader/loader-dnk/loader-dnk";
+import loaderCircle from "@/components/ui-kit/v-loader/v-loader-circle/v-loader-circle";
+import loaderDnk from "@/components/ui-kit/v-loader/v-loader-dnk/v-loader-dnk";
 
 //layouts
 import layoutDefault from '@/layouts/default/default'
@@ -48,7 +48,7 @@ export default {
     loading: true
   }),
   methods: {
-    ...mapActions(['searchData', 'searchBasket']), closePopup() {
+    ...mapActions(['searchData', 'searchBasket', 'searchReviews']), closePopup() {
       this.popup = this.popupType = null
     },
     openPopup(name, title, id = null) {
@@ -61,13 +61,15 @@ export default {
     ...mapGetters(['getProducts']),
     layout() {
       return this.$route.meta.layout || 'layout-default'
+    },
+    classApp() {
+      return ['app', {'app--loading': this.loading}]
     }
   },
   async mounted() {
-    console.log(window.innerWidth)
-    console.log(window.innerHeight)
     await this.searchData()
     await this.searchBasket()
+    await this.searchReviews()
     let timeout = setTimeout(()=> {
       this.loading = false
     }, 5000)

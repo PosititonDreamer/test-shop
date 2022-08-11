@@ -37,9 +37,22 @@ export default {
                     console.log(error)
                 })
         },
+        async searchProduct({commit}, productId) {
+            return new Promise((resolve, reject) => {
+                axios
+                    .get('http://test1.web-gu.ru/?action=show_product&id=' + productId)
+                    .then (response=> {
+                        let timeout = setTimeout(()=> {
+                            resolve(response.data)
+                        }, 3000)
+                    })
+            })
+
+        },
         productStatus({commit}, product) {
             commit('setProductStatus', product)
-        }
+        },
+
     },
     mutations: {
         setCategories(state, data) {
@@ -56,7 +69,7 @@ export default {
                 if(item.id === id) item.inBasket = !item.inBasket
                 return item
             })
-        }
+        },
     },
     getters: {
         getCategories(state) {

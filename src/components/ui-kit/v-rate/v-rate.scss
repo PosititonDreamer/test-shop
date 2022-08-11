@@ -1,0 +1,35 @@
+.rating {
+  &__name {
+    font-size: 16px;
+    line-height: 19px;
+    color: var(--black);
+    margin-bottom: 7px;
+  }
+
+  &__wrapper {
+    width: max-content;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-gap: 2px;
+  }
+
+  &__button {
+    cursor: pointer;
+
+    svg {
+      width: 18px;
+      height: auto;
+
+      path {
+        transition: 0.2s;
+        fill: var(--sidebar-border)
+      }
+    }
+
+    &--active, &--hover {
+      svg path {
+        fill: var(--rating-yellow);
+      }
+    }
+  }
+}

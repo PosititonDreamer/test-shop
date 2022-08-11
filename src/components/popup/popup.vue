@@ -1,12 +1,14 @@
 <template>
-  <div class="popup" @click="popupClick">
-    <div :class="classWrapper" >
+  <div class="popup" @click="closePopup">
+    <div :class="classWrapper" @click.stop>
       <div class="popup__heading">
         <h3 class="popup__title">{{title}}</h3>
         <button class="popup__close" @click="closePopup" ><close/></button>
       </div>
       <div class="popup__content">
+        <simplebar class="popup__scroll" data-simplebar-auto-hide="false">
           <slot />
+        </simplebar>
       </div>
     </div>
   </div>
@@ -14,6 +16,12 @@
 <script>
 // svg
 import close from '@/assets/img/svg/popup/close.svg'
+
+// css
+import 'simplebar/dist/simplebar.min.css';
+
+// component
+import simplebar from 'simplebar-vue';
 
 export default {
   name: 'popup',
@@ -33,9 +41,6 @@ export default {
         this.$emit('close')
       }, 500)
     },
-    popupClick(e) {
-      if(!e.target.closest('.popup__wrapper')) this.closePopup()
-    },
     clickEscape(e) {
       if(e.code === 'Escape') this.closePopup()
     }
@@ -52,7 +57,7 @@ export default {
     window.removeEventListener('keydown',this.clickEscape)
   },
   components: {
-    close
+    close, simplebar
   }
 }
 </script>

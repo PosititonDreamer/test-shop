@@ -1,13 +1,14 @@
 $animation-delay: 1;
 $dot-width: 100;
+$dot-count: 10;
 
 .loader-circle {
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: auto;
   background: var(--home-background);
   &__item {
     display: flex;
@@ -17,7 +18,7 @@ $dot-width: 100;
     border-radius: 50%;
     border: 5px solid transparent;
     border-top-color: var(--akcent-color-70);
-    @for $i from 1 through 6 {
+    @for $i from 1 through $dot-count {
       &:nth-child(#{$i}) {
         width: #{$dot-width}px;
         height: #{$dot-width}px;

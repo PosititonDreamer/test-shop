@@ -1,0 +1,26 @@
+.form {
+  margin-top: 26px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 22px;
+}
+.form-wrapper {
+  display: grid;
+  &--create {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 350px;
+  }
+  &__placed {
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 700;
+    color: var(--text-color);
+  }
+  &__image {
+    margin-bottom: 10px;
+    transform: translateX(20px);
+  }
+}

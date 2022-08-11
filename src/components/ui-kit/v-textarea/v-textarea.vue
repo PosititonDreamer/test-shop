@@ -1,7 +1,7 @@
 <template>
   <div class="textarea-wrapper">
     <p class="textarea__name">{{name}}</p>
-    <textarea :class="textareaClass" @input="$emit('input', $event.target.value())" @blur="$emit('blur')" :rows="rows">{{value}}</textarea>
+    <textarea :class="textareaClass" @input="$emit('input', $event.target.value)" @blur="$emit('blur')" :rows="rows"></textarea>
     <span :class="errorClass" >{{errorText}}</span>
   </div>
 </template>
@@ -13,11 +13,6 @@ export default {
       type: String,
       required: true
     },
-    error: {
-      type: Boolean,
-      required: false,
-      default: false
-    },
     rows: {
       type: Number,
       required: false,
@@ -25,7 +20,8 @@ export default {
     },
     errorText: {
       type: String,
-      required: true
+      required: false,
+      default: ''
     },
     value: {
       type: String,
@@ -35,10 +31,10 @@ export default {
   },
   computed: {
     textareaClass() {
-      return ['textarea', {'textarea--error': this.error}]
+      return ['textarea', {'textarea--error': this.errorText.length}]
     },
     errorClass () {
-      return ['textarea__error', {'textarea__error--view': this.error}]
+      return ['textarea__error', {'textarea__error--view': this.errorText.length}]
     }
   }
 }

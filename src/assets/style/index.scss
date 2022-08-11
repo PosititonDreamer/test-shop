@@ -18,9 +18,15 @@ body {
   overflow-x: hidden;
 }
 
-#app {
+.app {
   background: var(--home-background);
   min-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr;
+  &--loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-template-rows: unset;
+  }
 }

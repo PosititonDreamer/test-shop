@@ -1,16 +1,16 @@
-$dot-count: 26;
+$dot-count: 40;
 $dot-size: 20px;
-$dot-space: 25px;
+$dot-space: 30px;
 $dot-start: (($dot-count / 2 + 1) * ($dot-size + $dot-space)) / 2;
 
-$animation-time: 2s;
-$animation-distance: 50px;
+$animation-time: 2.5s;
+$animation-distance: 75px;
 
 .loader-dnk {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) rotate(45deg);
   &__item {
     position: absolute;
     height: #{$dot-size};
