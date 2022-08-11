@@ -72,6 +72,7 @@ export default {
     await this.searchReviews()
     let timeout = setTimeout(()=> {
       this.loading = false
+      clearTimeout(timeout)
     }, 5000)
   },
   components: {

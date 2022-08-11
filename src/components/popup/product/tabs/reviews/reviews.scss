@@ -3,6 +3,7 @@
   grid-template-columns: 1fr;
   grid-gap: 31px;
   margin-top: 31px;
+  padding-bottom: 15px;
   &__item {
     width: 100%;
     display: grid;
@@ -60,6 +61,6 @@
     font-size: 14px;
     line-height: 17px;
     font-weight: 400;
-    color: var(--text-color);
+
   }
 }

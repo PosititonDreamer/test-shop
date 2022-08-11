@@ -2,7 +2,7 @@
     <div class="product-tabs">
       <v-tabs>
         <v-tab title="Описание">
-          <p class="product-tabs__description">{{descriptionText}}</p>
+          <div class="product-tabs__description" v-html="description"></div>
         </v-tab>
         <v-tab title="Характеристики">
            <div class="properties">
@@ -54,11 +54,6 @@ export default {
   },
   computed: {
     ...mapGetters(['getReviews']),
-    descriptionText() {
-      let div = document.createElement('div')
-      div.innerHTML = this.description
-      return div.innerText
-    },
     reviewsMassive() {
       let reviewsStorage = this.getReviews.filter(item => item.id === this.productId).map(item=> {return item.data})
       return [...Object.values(this.reviews), ...reviewsStorage]

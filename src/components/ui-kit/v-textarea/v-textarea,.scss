@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  padding-bottom: 16px;
+  position: relative;
 }
 .textarea {
   border: 1px solid var(--border-input);
@@ -30,6 +32,9 @@
     line-height: 16px;
     transition: 0.4s;
     user-select: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
     &--view {
       user-select: unset;
       pointer-events: auto;
