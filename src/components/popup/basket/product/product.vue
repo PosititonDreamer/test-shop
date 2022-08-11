@@ -28,9 +28,9 @@ export default {
     ...mapActions(['removeProduct', 'productStatus']),
     updateBasket(product) {
       this.loading = true
-      this.removeProduct(product).then(result => {
+      this.removeProduct(product).then(() => {
         this.productStatus(product.id)
-      }).finally(result => {
+      }).finally(() => {
         this.loading = false
       })
 

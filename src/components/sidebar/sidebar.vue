@@ -2,7 +2,7 @@
   <div class="sidebar">
     <nav class="sidebar-nav">
       <ul class="sidebar-nav__list">
-        <li v-for="category in subCategories" :class="[['sidebar-nav__item'], {'sidebar-nav__item--active': category.id === Number($route.params.subId)}]" >
+        <li v-for="category in subCategories" :class="[['sidebar-nav__item'], {'sidebar-nav__item--active': category.id === Number($route.params.subId)}]" :key="category.id">
           <router-link class="sidebar-nav__link" tag="a" :to="forwardLink(category)"> {{category.name}} </router-link>
         </li>
       </ul>

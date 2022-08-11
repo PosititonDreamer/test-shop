@@ -38,7 +38,7 @@ export default {
                 })
         },
         async searchProduct({commit}, productId) {
-            return new Promise((resolve, reject) => {
+            return new Promise((resolve) => {
                 axios
                     .get('http://test1.web-gu.ru/?action=show_product&id=' + productId)
                     .then (response=> {

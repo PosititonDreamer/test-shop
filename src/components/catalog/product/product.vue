@@ -42,15 +42,15 @@ export default {
     updateBasket(product) {
       this.loading = true
       if(this.product.inBasket) {
-        this.removeProduct(product).then(result=> {
+        this.removeProduct(product).then(()=> {
           this.productStatus(product.id)
-        }).finally(result=> {
+        }).finally(()=> {
           this.loading = false
         })
       } else {
-        this.addProduct(product).then(result=>{
+        this.addProduct(product).then(()=>{
           this.productStatus(product.id)
-        }).finally(result=> {
+        }).finally(()=> {
           this.loading = false
         })
       }

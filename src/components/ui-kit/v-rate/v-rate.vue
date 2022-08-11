@@ -2,15 +2,15 @@
   <div class="rating">
     <p class="rating__name">Оценка</p>
     <div class="rating__wrapper">
-      <button type="button" v-for="i in 5" :class="classButton(i)" @click="changeRate(i)" @mouseenter="hoverRate(i)" @mouseleave="hoverRate(0)">
-        <rate />
+      <button type="button" v-for="i in 5" :class="classButton(i)" @click="changeRate(i)" @mouseenter="hoverRate(i)" @mouseleave="hoverRate(0)" :key="i">
+        <rate-image />
       </button>
     </div>
   </div>
 </template>
 <script>
 // svg
-import rate from '@/assets/img/svg/popup/product/rate.svg'
+import rateImage from '@/assets/img/svg/popup/product/rate.svg'
 
 export default {
   name: 'rating',
@@ -31,7 +31,7 @@ export default {
     }
   },
   components: {
-    rate
+    rateImage
   }
 }
 </script>

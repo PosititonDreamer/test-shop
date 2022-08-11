@@ -6,7 +6,7 @@
         </v-tab>
         <v-tab title="Характеристики">
            <div class="properties">
-            <div class="properties__item" v-for="prop in props">
+            <div class="properties__item" v-for="(prop, index) in props" :key="index">
               <p class="properties__name">{{prop.caption}}</p>
               <span class="properties__value">{{prop.value}} {{prop.measure}}</span>
             </div>

@@ -3,7 +3,7 @@
     <template v-if="getBasket.length && !orderPlaced">
         <p class="basket__name">В корзине:</p>
         <div class="basket__list">
-          <product class="basket__item" v-for="product in getBasket" :product="product" />
+          <product class="basket__item" v-for="product in getBasket" :product="product" :key="product.id" />
         </div>
         <basketForm
           @newOrder="newOrder"

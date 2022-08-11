@@ -8,7 +8,7 @@ export default {
             commit('setReviews', reviews)
         },
         addReview({commit}, data) {
-            return new Promise((resolve, reject)=> {
+            return new Promise((resolve)=> {
                 let reviews = localStorage.getItem('reviews')
                 reviews = reviews ? [...JSON.parse(reviews), data] : [data]
                 localStorage.setItem('reviews', JSON.stringify(reviews))

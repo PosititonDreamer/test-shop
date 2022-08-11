@@ -8,7 +8,7 @@ export default {
             if (basket) commit('setBasket', JSON.parse(basket))
         },
         addProduct({commit}, product) {
-            return new Promise((resolve, reject) => {
+            return new Promise((resolve) => {
                 let timeout = setTimeout(() => {
                     let basket = localStorage.getItem('basket')
                     basket = basket ? [...JSON.parse(basket), product] : [product]
@@ -21,7 +21,7 @@ export default {
             })
         },
         removeProduct({commit}, product) {
-            return new Promise((resolve, reject) => {
+            return new Promise((resolve) => {
                 let timeout = setTimeout(() => {
                     let basket = localStorage.getItem('basket')
                     basket = JSON.parse(basket).filter(item => item.id !== product.id)
@@ -34,8 +34,7 @@ export default {
             })
         },
         addOrder({commit}, data) {
-            return new Promise((resolve, reject) => {
-
+            return new Promise((resolve) => {
                 let timeout = setTimeout(() => {
                     let orders = localStorage.getItem('orders')
                     let newOrder = {user: data, products: this.state.basket.basket}

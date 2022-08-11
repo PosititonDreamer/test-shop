@@ -49,13 +49,14 @@ export default {
   methods: {
     ...mapActions(['addOrder']),
     createOrder() {
-      this.formCheck.name = this.formCheck.address = this.formCheck.phone = true
+      this.formCheck.name = true
+      this.formCheck.address = true
+      this.formCheck.phone = true
       if(!this.checkName && !this.checkPhone && !this.checkAddress) {
         this.loading = true
         this.addOrder(this.formData).then(()=>{
           this.$emit('newOrder')
         }).catch(()=> {
-
         }).finally(()=> {
           this.loading = false
         })

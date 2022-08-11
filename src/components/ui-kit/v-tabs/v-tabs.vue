@@ -1,7 +1,7 @@
 <template>
   <div class="tabs" >
     <div class="tabs__list">
-      <div  v-for="(tab, index) in tabs" :class="classItem(tab)" @click="changeTab(index)">{{tab.title}}</div>
+      <div  v-for="(tab, index) in tabs" :class="classItem(tab)" @click="changeTab(index)" :key="index">{{tab.title}}</div>
     </div>
     <slot  />
   </div>

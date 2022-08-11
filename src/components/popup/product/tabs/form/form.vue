@@ -69,18 +69,17 @@ export default {
     ...mapActions(['addReview']),
     createReview() {
       let newMassive = JSON.parse(JSON.stringify(this.formData))
-
-      this.formCheck.text = this.formCheck.author = true
+      this.formCheck.text = true
+      this.formCheck.author = true
       if(!this.checkReview && !this.checkAuthor) {
         this.loading = true
         this.addReview({id: this.productId, data: newMassive})
             .then(()=> {
-              this.formCheck.text = this.formCheck.author = false
-              this.formData.text = this.formData.author = ''
-              this.formData.rate = 0
               this.receiveReview = true
             })
-            .finally(()=> this.loading = false)
+            .finally(()=> {
+              this.loading = false
+            })
       }
     }
   },
