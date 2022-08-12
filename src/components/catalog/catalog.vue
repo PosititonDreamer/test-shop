@@ -4,20 +4,19 @@
       <template v-if="productsList.length">
         <catalog-product  v-for="product in productsList" :key="product.id" :product="product" @openProduct="$emit('openProduct', $event)"/>
       </template>
-      <template v-else>
-        <cart class="catalog__image" />
-        <strong class="catalog__text">В данной категории товаров пока нет</strong>
-      </template>
+      <v-notification v-else text="В данной категории товаров пока нет" vImage="cart" />
     </div>
   </div>
 </template>
 <script>
-// components
+// vuex
 import {mapGetters} from "vuex";
-import catalogProduct from './catalog-product/catalog-product'
 
-// svg
-import cart from '@/assets/img/svg/catalog/cart.svg'
+// components
+import catalogProduct from './catalog-product/catalog-product'
+import vNotification from '@/components/ui-kit/v-notification/v-notification'
+
+
 export default {
   name: 'catalog',
   computed: {
@@ -30,7 +29,7 @@ export default {
     }
   },
   components: {
-    catalogProduct, cart
+    catalogProduct, vNotification
   }
 }
 </script>

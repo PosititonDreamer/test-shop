@@ -1,9 +1,6 @@
 <template>
   <div :class="classWrapper">
-    <template v-if="receiveReview">
-      <reviewPlaced class="form-wrapper__image" />
-      <p class="form-wrapper__placed">Отзыв создан</p>
-    </template>
+    <v-natification v-if="receiveReview" text="Отзыв успешно создан" vImage="arrow" />
     <template v-else>
       <v-form class="form" @submit="createReview">
         <v-rate @rate="formData.rate = $event" />
@@ -21,12 +18,10 @@ import vInput from '@/components/ui-kit/v-input/v-input'
 import vTextarea from '@/components/ui-kit/v-textarea/v-textarea'
 import vButton from '@/components/ui-kit/v-button/v-button'
 import vRate from '@/components/ui-kit/v-rate/v-rate'
+import vNatification from '@/components/ui-kit/v-notification/v-notification'
 
 // vuex
 import {mapActions} from "vuex";
-
-// svg
-import reviewPlaced from '@/assets/img/svg/popup/product/review-placed.svg'
 
 export default {
   name: 'popup-product-tabs-form',
@@ -84,7 +79,7 @@ export default {
     }
   },
   components: {
-    vForm, vInput, vTextarea, vButton, vRate, reviewPlaced
+    vForm, vInput, vTextarea, vButton, vRate, vNatification
   }
 }
 </script>

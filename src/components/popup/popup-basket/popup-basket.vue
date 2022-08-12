@@ -9,14 +9,8 @@
           @newOrder="newOrder"
         />
     </template>
-    <template v-else-if="!getBasket.length && !orderPlaced">
-      <basket-empty />
-      В корзине ничего нет
-    </template>
-    <template v-else>
-      <order-placed/>
-      Заказ успешно создан
-    </template>
+    <v-notification v-else-if="!getBasket.length && !orderPlaced" text="В корзине ничего нет" vImage="cart" />
+    <v-notification v-else vImage="arrow"text="Заказ успешно создан" />
   </div>
 </template>
 <script>
@@ -26,10 +20,7 @@ import {mapActions, mapGetters} from "vuex";
 // components
 import popupBasketProduct from "./popup-basket-product/popup-basket-product";
 import popupBasketForm from './popup-basket-form/popup-basket-form'
-
-// svg
-import basketEmpty from '@/assets/img/svg/popup/basket/basket-empty.svg'
-import orderPlaced from '@/assets/img/svg/popup/basket/order-placed.svg'
+import vNotification from '@/components/ui-kit/v-notification/v-notification'
 
 export default {
   name: "popup-basket",
@@ -46,12 +37,12 @@ export default {
   computed: {
     ...mapGetters(['getBasket']),
     basketClass() {
-      if(this.orderPlaced) return 'order-placed'
+      if(this.orderPlaced) return 'basket--placed'
       return this.getBasket.length && !this.orderPlaced ? 'basket' : 'basket--empty'
     }
   },
   components: {
-    popupBasketProduct, popupBasketForm,basketEmpty ,orderPlaced
+    popupBasketProduct, popupBasketForm,vNotification
   }
 }
 </script>

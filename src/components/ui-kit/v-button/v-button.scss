@@ -60,26 +60,6 @@
       }
     }
   }
-  &--white {
-    color: var(--akcent-color);
-    transition: 0.4s;
-    font-size: 14px;
-    line-height: 16px;
-    font-weight: 700;
-    cursor: pointer;
-    background: var(--white);
-    box-shadow: unset;
-    padding: unset;
-    height: unset;
-    .button__loading {
-      background: white;
-      justify-content: flex-start;
-      padding: 0 2px;
-      span {
-        background: var(--akcent-color);
-      }
-    }
-  }
 }
 @keyframes spanAnimation {
   0% {

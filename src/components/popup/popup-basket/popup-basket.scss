@@ -1,30 +1,38 @@
 .basket {
   &__list {
     min-height: 426px;
+    ::v-deep {
+      .button {
+        color: var(--akcent-color);
+        transition: 0.4s;
+        font-size: 14px;
+        line-height: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        background: var(--white);
+        box-shadow: unset;
+        padding: unset;
+        height: unset;
+        .button__loading {
+          background: white;
+          justify-content: flex-start;
+          padding: 0 2px;
+          span {
+            background: var(--akcent-color);
+          }
+        }
+      }
+    }
   }
   &__item {
     &:not(:last-child) {
       border-bottom: 1px solid var(--border-product-basket);
     }
   }
-}
-.order-placed, .basket--empty {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
-  font-size: 24px;
-  line-height: 28px;
-  font-weight: 700;
-
-}
-.order-placed svg {
-  width: 140px;
-  transform: translateX(42.5px);
-  margin-bottom: 21px;
-}
-.basket--empty svg {
-  width: 99px;
-  margin-bottom: 26px;
+  &--empty, &--placed {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
 }

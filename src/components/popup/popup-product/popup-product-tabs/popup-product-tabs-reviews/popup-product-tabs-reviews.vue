@@ -18,7 +18,7 @@
 </template>
 <script>
 // svg
-import rating from '@/assets/img/svg/popup/product/rate.svg'
+import rating from '@/assets/img/svg/popup/popup-product/rate.svg'
 export default {
   name: 'popup-product-tabs-reviews',
   props: {

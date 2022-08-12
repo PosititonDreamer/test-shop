@@ -16,15 +16,10 @@ export default {
       type: Boolean,
       default: false
     },
-    color: {
-      type: String,
-      default: ''
-    }
-
   },
   computed: {
     buttonClass() {
-      return ['button', 'button--' + this.color, {'button--loaded': this.loading}]
+      return ['button', {'button--loaded': this.loading}]
     }
   }
 }

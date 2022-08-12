@@ -10,7 +10,7 @@
 </template>
 <script>
 // svg
-import rateImage from '@/assets/img/svg/popup/product/rate.svg'
+import rateImage from '@/assets/img/svg/popup/popup-product/rate.svg'
 
 export default {
   name: 'v-rate',

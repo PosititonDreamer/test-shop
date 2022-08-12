@@ -1,5 +1,5 @@
 <template>
-  <section class="catalog">
+  <section class="catalog-layout">
     <sidebar/>
     <template v-if="!getProducts.length">
       ЖДИ ИДЕТ ЗАГРУЗКА
