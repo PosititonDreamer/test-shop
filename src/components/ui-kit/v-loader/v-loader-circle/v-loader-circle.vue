@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-  name: 'loader-circle'
+  name: 'v-loader-circle'
 }
 </script>
 <style lang="scss" src="./v-loader-circle.scss" scoped />

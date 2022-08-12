@@ -4,26 +4,22 @@ export default {
     },
     actions: {
         async searchReviews({commit}) {
-            let reviews = localStorage.getItem('reviews') ? JSON.parse( localStorage.getItem('reviews')) : []
+            let reviews = JSON.parse( localStorage.getItem('reviews')) ?? []
             commit('setReviews', reviews)
         },
         addReview({commit}, data) {
             return new Promise((resolve)=> {
-                let reviews = localStorage.getItem('reviews')
-                reviews = reviews ? [...JSON.parse(reviews), data] : [data]
-                localStorage.setItem('reviews', JSON.stringify(reviews))
-                commit('setReviews', reviews)
-
-                let timeout = setTimeout(()=>{
+                setTimeout(()=>{
+                    commit('setReviews', data)
                     resolve(true)
-                    clearTimeout(timeout)
                 }, 2000)
             })
         }
     },
     mutations: {
-        setReviews(state, data) {
-            state.reviews = data
+        setReviews(state, review) {
+            state.reviews.push(review)
+            localStorage.setItem('reviews', JSON.stringify(state.reviews))
         }
     },
     getters: {

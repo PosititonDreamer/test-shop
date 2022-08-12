@@ -15,17 +15,14 @@ export default {
     },
     rows: {
       type: Number,
-      required: false,
       default: 4
     },
     errorText: {
       type: String,
-      required: false,
       default: ''
     },
     value: {
       type: String,
-      required: false,
       default: ''
     }
   },

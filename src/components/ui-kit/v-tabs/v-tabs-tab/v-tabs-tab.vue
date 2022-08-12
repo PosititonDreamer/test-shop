@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-  name: 'vTab',
+  name: 'v-tab',
   data: ()=>({
     isActive: false
   }),

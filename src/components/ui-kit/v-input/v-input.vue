@@ -19,12 +19,11 @@ export default {
     },
     errorText: {
       type: String,
-      required: false,
       default: ''
     },
     value: {
       type: String,
-      required: false,
+
       default: ''
     }
   },

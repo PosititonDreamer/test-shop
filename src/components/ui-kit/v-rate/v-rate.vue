@@ -13,7 +13,7 @@
 import rateImage from '@/assets/img/svg/popup/product/rate.svg'
 
 export default {
-  name: 'rating',
+  name: 'v-rate',
   data:()=>({
     rating: 0,
     ratingHover: null

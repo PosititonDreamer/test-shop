@@ -15,7 +15,7 @@ import {mapGetters} from 'vuex'
 import sidebar from "@/components/sidebar/sidebar";
 
 export default {
-  name: 'catalogLayout',
+  name: 'layout-catalog',
   computed: {
     ...mapGetters(['getProducts'])
   },
@@ -24,4 +24,4 @@ export default {
   }
 }
 </script>
-<style lang="scss" src="./catalog.scss" scoped />
+<style lang="scss" src="./layout-catalog.scss" scoped />

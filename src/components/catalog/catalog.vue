@@ -2,7 +2,7 @@
   <div class="catalog">
     <div :class="classList">
       <template v-if="productsList.length">
-        <product  v-for="product in productsList" :key="product.id" :product="product" @openProduct="$emit('openProduct', $event)"/>
+        <catalog-product  v-for="product in productsList" :key="product.id" :product="product" @openProduct="$emit('openProduct', $event)"/>
       </template>
       <template v-else>
         <cart class="catalog__image" />
@@ -14,7 +14,7 @@
 <script>
 // components
 import {mapGetters} from "vuex";
-import product from './product/product'
+import catalogProduct from './catalog-product/catalog-product'
 
 // svg
 import cart from '@/assets/img/svg/catalog/cart.svg'
@@ -30,7 +30,7 @@ export default {
     }
   },
   components: {
-    product, cart
+    catalogProduct, cart
   }
 }
 </script>

@@ -3,9 +3,9 @@
     <template v-if="getBasket.length && !orderPlaced">
         <p class="basket__name">В корзине:</p>
         <div class="basket__list">
-          <product class="basket__item" v-for="product in getBasket" :product="product" :key="product.id" />
+          <popup-basket-product class="basket__item" v-for="product in getBasket" :product="product" :key="product.id" />
         </div>
-        <basketForm
+        <popup-basket-form
           @newOrder="newOrder"
         />
     </template>
@@ -24,15 +24,15 @@
 import {mapActions, mapGetters} from "vuex";
 
 // components
-import product from "./product/product";
-import basketForm from './form/form'
+import popupBasketProduct from "./popup-basket-product/popup-basket-product";
+import popupBasketForm from './popup-basket-form/popup-basket-form'
 
 // svg
 import basketEmpty from '@/assets/img/svg/popup/basket/basket-empty.svg'
 import orderPlaced from '@/assets/img/svg/popup/basket/order-placed.svg'
 
 export default {
-  name: "basketPopup",
+  name: "popup-basket",
   data: ()=> ({
     orderPlaced: false,
   }),
@@ -51,8 +51,8 @@ export default {
     }
   },
   components: {
-    product, basketForm,basketEmpty ,orderPlaced
+    popupBasketProduct, popupBasketForm,basketEmpty ,orderPlaced
   }
 }
 </script>
-<style lang="scss" src="./basket.scss" scoped />
+<style lang="scss" src="./popup-basket.scss" scoped />

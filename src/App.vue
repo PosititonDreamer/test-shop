@@ -2,7 +2,7 @@
   <div id="app" :class="classApp">
 
     <template v-if="loading">
-      <loader-dnk />
+      <v-loader-dnk />
     </template>
     <template v-else>
       <v-header @openBasket="openPopup('popupBasket','Оформить заказ')"/>
@@ -28,16 +28,16 @@ import {mapActions, mapGetters} from 'vuex'
 
 // components
 import vHeader from "@/components/v-header/v-header"
-import Popup from "@/components/popup/popup";
-import popupProduct from '@/components/popup/product/product'
-import popupBasket from '@/components/popup/basket/basket'
-import loaderCircle from "@/components/ui-kit/v-loader/v-loader-circle/v-loader-circle";
-import loaderDnk from "@/components/ui-kit/v-loader/v-loader-dnk/v-loader-dnk";
+import popup from "@/components/popup/popup";
+import popupProduct from '@/components/popup/popup-product/popup-product'
+import popupBasket from '@/components/popup/popup-basket/popup-basket'
+import vLoaderCircle from "@/components/ui-kit/v-loader/v-loader-circle/v-loader-circle";
+import vLoaderDnk from "@/components/ui-kit/v-loader/v-loader-dnk/v-loader-dnk";
 
 //layouts
-import layoutDefault from '@/layouts/default/default'
-import layoutCatalog from '@/layouts/catalog/catalog'
-import layoutError from '@/layouts/error/error'
+import layoutDefault from '@/layout/layout-default/layout-default'
+import layoutCatalog from '@/layout/layout-catalog/layout-catalog'
+import layoutError from '@/layout/layout-error/layout-error'
 
 export default {
   name: "app",
@@ -67,16 +67,13 @@ export default {
     }
   },
   async mounted() {
-    await this.searchData()
-    await this.searchBasket()
-    await this.searchReviews()
-    let timeout = setTimeout(()=> {
+    await Promise.all([this.searchData() ,this.searchBasket() ,this.searchReviews() ])
+    setTimeout(()=> {
       this.loading = false
-      clearTimeout(timeout)
     }, 5000)
   },
   components: {
-    Popup, vHeader,  popupProduct, popupBasket,layoutDefault ,layoutCatalog ,layoutError, loaderCircle, loaderDnk
+    popup, vHeader,  popupProduct, popupBasket,layoutDefault ,layoutCatalog ,layoutError, vLoaderCircle, vLoaderDnk
   }
 }
 </script>

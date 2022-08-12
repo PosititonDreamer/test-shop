@@ -1,11 +1,12 @@
 <template>
-  <section class="home">
-    <catalog @openProduct="$emit('openProduct', $event)" />
-  </section>
+    <catalog class="home" @openProduct="$emit('openProduct', $event)" />
 </template>
 <script>
-import {mapGetters} from 'vuex'
+// components
 import catalog from '@/components/catalog/catalog'
+
+// vuex
+import {mapGetters} from 'vuex'
 
 export default {
   name: 'home',

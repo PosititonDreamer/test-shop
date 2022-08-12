@@ -1,22 +1,22 @@
 <template>
   <header class="header">
-    <router-link class="logo" :to="{name: 'home'}" tag="a" ><logo/></router-link>
-    <navigation />
-    <basket @openBasket="$emit('openBasket')" />
+    <router-link class="logo" :to="{name: 'home'}" ><logo/></router-link>
+    <v-header-navigation />
+    <v-header-basket @openBasket="$emit('openBasket')" />
   </header>
 </template>
 <script>
 // components
-import navigation from "@/components/v-header/navigation/navigation";
-import basket from "@/components/v-header/basket/basket";
+import vHeaderNavigation from "@/components/v-header/v-header-navigation/v-header-navigation";
+import vHeaderBasket from "@/components/v-header/v-header-basket/v-header-basket";
 
 // svg
-import logo from "@/assets/img/svg/header/logo.svg"
+import logo from "@/assets/img/svg/v-header/logo.svg"
 
 export default {
-  name: "headerVue",
+  name: "v-header",
   components: {
-    logo, basket, navigation
+    logo, vHeaderNavigation, vHeaderBasket
   }
 }
 </script>

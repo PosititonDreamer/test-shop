@@ -7,7 +7,6 @@ export default {
   props: {
     text: {
       type: String,
-      required: false,
       default: "Данная страница не найдена"
     }
   },

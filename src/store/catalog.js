@@ -8,7 +8,7 @@ export default {
     },
     actions: {
         async searchData({commit}) {
-            let basket = localStorage.getItem('basket') ? JSON.parse( localStorage.getItem('basket')) : []
+            let basket = JSON.parse( localStorage.getItem('basket')) ?? []
             await axios
                 .get('http://test1.web-gu.ru/')
                 .then((response) => {
@@ -22,7 +22,7 @@ export default {
                     subCategories.forEach(item => {
                         products = [...products, ...response.data.filter(subItem => subItem.parent_id === item.id)]
                     })
-                    products.map(item=> {
+                    products.forEach(item=> {
                         let find = basket.find(basketItem => basketItem.id === item.id)
                         if(find) item.inBasket = true
                         else item.inBasket = false
@@ -42,7 +42,7 @@ export default {
                 axios
                     .get('http://test1.web-gu.ru/?action=show_product&id=' + productId)
                     .then (response=> {
-                        let timeout = setTimeout(()=> {
+                        setTimeout(()=> {
                             resolve(response.data)
                         }, 3000)
                     })

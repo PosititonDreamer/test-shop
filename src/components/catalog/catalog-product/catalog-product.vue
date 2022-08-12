@@ -1,12 +1,12 @@
 <template>
   <div class="product">
-    <div class="product__image" @click="$emit('openProduct', product.id)">
+    <div class="product__image" @click="openProduct(product.id)">
       <img :src="product.img" alt="">
     </div>
     <div class="product__content">
-      <p class="product__name" @click="$emit('openProduct', product.id)">{{product.name}}</p>
+      <p class="product__name" @click="openProduct(product.id)">{{product.name}}</p>
       <strong class="product__price">{{ product.price.toLocaleString()}} ₽</strong>
-      <vButton class="product__button" @click="updateBasket(product)" :loading="loading" :disabled="loading">
+      <v-button class="product__button" @click="updateBasket(product)" :loading="loading">
         <template v-if="product.inBasket">
           В корзине
           <arrow />
@@ -14,7 +14,7 @@
         <template v-else>
           Добавить в корзину
         </template>
-      </vButton>
+      </v-button>
     </div>
   </div>
 </template>
@@ -27,7 +27,7 @@ import vButton from '@/components/ui-kit/v-button/v-button'
 import arrow from '@/assets/img/svg/catalog/arrow.svg'
 
 export default {
-  name: 'product',
+  name: 'catalog-product',
   data: ()=> ({
     loading: false
   }),
@@ -54,7 +54,9 @@ export default {
           this.loading = false
         })
       }
-
+    },
+    openProduct(id) {
+      this.$emit('openProduct', id)
     }
   },
   components: {
@@ -62,4 +64,4 @@ export default {
   }
 }
 </script>
-<style lang="scss" src="./product.scss" scoped />
+<style lang="scss" src="./catalog-product.scss" scoped />

@@ -5,6 +5,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 37px 38px;
+    grid-template-rows: max-content;
   }
 
   &__empty {

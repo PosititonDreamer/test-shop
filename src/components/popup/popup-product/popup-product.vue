@@ -1,7 +1,7 @@
 <template>
   <div :class="classDetail">
     <template v-if="loading">
-      <loaderCircle />
+      <v-loader-circle />
     </template>
     <template v-else-if="product && !loading">
       <div class="product-detail__image" >
@@ -9,7 +9,7 @@
       </div>
       <p class="product-detail__name">{{product.name}}</p>
       <strong class="product-detail__price">{{product.price}} ₽</strong>
-      <product-tabs :description="product.descr" :props="product.props" :reviews="Object.assign({}, product.reviews)" :productId="product.id" />
+      <popup-product-tabs :description="product.descr" :props="product.props" :reviews="Object.assign({}, product.reviews)" :productId="product.id" />
     </template>
     <template v-else>
       А нихуя
@@ -17,12 +17,13 @@
   </div>
 </template>
 <script>
-import loaderCircle from '@/components/ui-kit/v-loader/v-loader-circle/v-loader-circle'
-import productTabs from './tabs/tabs'
+import vLoaderCircle from '@/components/ui-kit/v-loader/v-loader-circle/v-loader-circle'
+import popupProductTabs from "@/components/popup/popup-product/popup-product-tabs/popup-product-tabs";
 import {mapActions} from "vuex";
 
+
 export default {
-  name: 'productDetail',
+  name: 'popup-product',
   data: ()=> ({
     product: [],
     loading: true
@@ -49,9 +50,9 @@ export default {
         } )
   },
   components: {
-    loaderCircle, productTabs
+    vLoaderCircle, popupProductTabs
   }
 
 }
 </script>
-<style lang="scss" src="./product.scss" scoped />
+<style lang="scss" src="./popup-product.scss" scoped />

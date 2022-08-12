@@ -3,10 +3,10 @@
     <ul class="nav__list">
       <li  v-for="category in getCategories" :class="['nav__item', {'nav__item--active': category.id === Number( $route.params.id) }]" :key="category.id">
         <router-link
-            :to="forwardLink(category)" class="nav__link" tag="a">{{category.name}}</router-link>
+            :to="forwardLink(category)" class="nav__link" >{{category.name}}</router-link>
       </li>
       <li  :class="['nav__item', {'nav__item--active': $route.name === 'ui-kit' }]">
-        <router-link :to="{name:'ui-kit'}" class="nav__link" tag="a">ui-kit</router-link>
+        <router-link :to="{name:'ui-kit'}" class="nav__link" >ui-kit</router-link>
       </li>
     </ul>
   </nav>
@@ -15,7 +15,7 @@
 import {mapGetters} from "vuex";
 
 export default {
-  name: 'navigation',
+  name: 'v-header-navigation',
   computed: {
     ...mapGetters(['getCategories']),
   },
@@ -27,4 +27,4 @@ export default {
 
 }
 </script>
-<style lang="scss" src="./navigation.scss" scoped/>
+<style lang="scss" src="./v-header-navigation.scss" scoped/>

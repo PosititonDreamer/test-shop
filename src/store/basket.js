@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export default {
     state: {
         basket: []
@@ -9,52 +11,59 @@ export default {
         },
         addProduct({commit}, product) {
             return new Promise((resolve) => {
-                let timeout = setTimeout(() => {
-                    let basket = localStorage.getItem('basket')
-                    basket = basket ? [...JSON.parse(basket), product] : [product]
-                    localStorage.setItem('basket', JSON.stringify(basket))
-                    commit('setBasket', basket)
+                setTimeout(() => {
+                    commit('addProduct', product)
+
                     resolve(true)
-                    clearTimeout(timeout)
                 }, 2000)
 
             })
         },
         removeProduct({commit}, product) {
             return new Promise((resolve) => {
-                let timeout = setTimeout(() => {
-                    let basket = localStorage.getItem('basket')
-                    basket = JSON.parse(basket).filter(item => item.id !== product.id)
-                    localStorage.setItem('basket', JSON.stringify(basket))
-                    commit('setBasket', basket)
+                setTimeout(() => {
+                    commit('removeProduct', product)
+
                     resolve(true)
-                    clearTimeout(timeout)
                 }, 2000)
 
             })
         },
-        addOrder({commit}, data) {
-            return new Promise((resolve) => {
-                let timeout = setTimeout(() => {
-                    let orders = localStorage.getItem('orders')
-                    let newOrder = {user: data, products: this.state.basket.basket}
-                    orders = orders? [...JSON.parse(orders), newOrder] : [newOrder]
-                    localStorage.setItem('orders', JSON.stringify(orders))
-                    localStorage.removeItem('basket')
-                    resolve(true)
-                    clearTimeout(timeout)
-                }, 2000)
-            })
+        async addOrder() {
+               return new Promise(resolve => {
+                   axios
+                       .get('http://test1.web-gu.ru/?action=send_form')
+                       .then(result=> {
+                           setTimeout(()=> {
+                               if(result.data.result) {
+                                   resolve(true)
+                               }
+                           }, 2000)
+                       })
+                       .catch(error=> {
+                           console.log(error)
+                       })
+               })
+
         },
         clearBasket({commit}) {
             commit('clearBasket')
         }
     },
     mutations: {
+        addProduct(state, product) {
+            state.basket.push(product)
+            localStorage.setItem('basket', JSON.stringify(state.basket))
+        },
+        removeProduct(state, product) {
+            state.basket = state.basket.filter(item => item.id !== product.id)
+            localStorage.setItem('basket', JSON.stringify(state.basket))
+        },
         setBasket(state, data) {
             state.basket = data
         },
         clearBasket(state) {
+            localStorage.removeItem('basket')
             this.state.catalog.products.forEach(item=> item.inBasket = false)
             state.basket = []
         }

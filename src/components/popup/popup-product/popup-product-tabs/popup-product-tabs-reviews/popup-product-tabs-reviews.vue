@@ -20,7 +20,7 @@
 // svg
 import rating from '@/assets/img/svg/popup/product/rate.svg'
 export default {
-  name: 'reviews',
+  name: 'popup-product-tabs-reviews',
   props: {
     reviews: {
       type: Array,
@@ -32,4 +32,4 @@ export default {
   }
 }
 </script>
-<style lang="scss" src="./reviews.scss" scoped />
+<style lang="scss" src="./popup-product-tabs-reviews.scss" scoped />

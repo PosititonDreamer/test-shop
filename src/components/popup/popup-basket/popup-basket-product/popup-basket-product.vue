@@ -6,7 +6,7 @@
     <div class="product__content">
       <p class="product__name">{{ product.name }}</p>
       <strong class="product__price">{{ product.price.toLocaleString() }} ₽</strong>
-      <v-button color="white" @click="updateBasket(product)" :loading="loading" :disabled="loading">убрать из корзины</v-button>
+      <v-button color="white" @click="updateBasket(product)" :loading="loading" >убрать из корзины</v-button>
     </div>
   </div>
 </template>
@@ -15,13 +15,14 @@ import vButton from '@/components/ui-kit/v-button/v-button'
 import {mapActions} from "vuex";
 
 export default {
-  name: 'basketProduct',
+  name: 'basket-product',
   data: () => ({
     loading: false
   }),
   props: {
     product: {
-      type: Object, required: true
+      type: Object,
+      required: true
     }
   },
   methods: {
@@ -41,4 +42,4 @@ export default {
   }
 }
 </script>
-<style lang="scss" src="./product.scss" scoped/>
+<style lang="scss" src="./popup-basket-product.scss" scoped/>

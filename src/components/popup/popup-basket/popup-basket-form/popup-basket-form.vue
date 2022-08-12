@@ -5,7 +5,7 @@
       <v-input class="form__input" :error-text="checkPhone" type="text" name="Телефон" v-model.trim="formData.phone" v-mask="'+7 (###) ##-##-###'" @blur="formCheck.phone = true"/>
     </div>
     <v-input class="form__input" :error-text="checkAddress" type="text" name="Полный адрес" v-model.trim="formData.address" @blur="formCheck.address = true"/>
-    <v-button class="form__button" type="submit" :loading="loading" :disabled="loading">Заказать</v-button>
+    <v-button class="form__button" type="submit" :loading="loading">Заказать</v-button>
   </v-form>
 </template>
 <script>
@@ -18,7 +18,7 @@ import vInput from '@/components/ui-kit/v-input/v-input'
 import {mapActions} from "vuex";
 
 export default {
-  name: 'basketForm',
+  name: 'basket-form',
   data: ()=>({
     formData: {
       name: '',
@@ -54,7 +54,7 @@ export default {
       this.formCheck.phone = true
       if(!this.checkName && !this.checkPhone && !this.checkAddress) {
         this.loading = true
-        this.addOrder(this.formData).then(()=>{
+        this.addOrder().then(()=>{
           this.$emit('newOrder')
         }).catch(()=> {
         }).finally(()=> {
@@ -68,4 +68,4 @@ export default {
   }
 }
 </script>
-<style lang="scss" src="./form.scss" scoped />
+<style lang="scss" src="./popup-basket-form.scss" scoped />

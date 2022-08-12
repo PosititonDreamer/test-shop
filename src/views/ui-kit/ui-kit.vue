@@ -2,8 +2,7 @@
   <section class="ui-kit">
     <div class="ui-kit__item">
       <v-button>Добавить в корзину</v-button>
-      <v-button disabled>Добавить в корзину</v-button>
-      <v-button disabled loading>Добавить в корзину</v-button>
+      <v-button loading>Добавить в корзину</v-button>
     </div>
     <div class="ui-kit__item">
       <v-input error-text="Имя обязательно для заполнения" type="text" name="Имя"  />

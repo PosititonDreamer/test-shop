@@ -9,7 +9,7 @@
 <script>
 
 export default {
-  name: 'vTabs',
+  name: 'v-tabs',
   data:()=>({
     activeIndex: 0,
     tabs: []

@@ -5,11 +5,11 @@
   </button>
 </template>
 <script>
-import cart  from "@/assets/img/svg/header/cart.svg"
+import cart  from "@/assets/img/svg/v-header/cart.svg"
 import {mapGetters} from 'vuex'
 
 export default {
-  name: 'basket',
+  name: 'v-header-basket',
   computed: {
     ...mapGetters(['getBasket'])
   },
@@ -19,4 +19,4 @@ export default {
 
 }
 </script>
-<style lang="scss" src="./basket.scss" scoped />
+<style lang="scss" src="./v-header-basket.scss" scoped />

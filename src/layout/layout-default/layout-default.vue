@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-  name: 'default-layout',
+  name: 'layout-default',
 }
 </script>
-<style lang="scss" src="./default.scss"  scoped/>
+<style lang="scss" src="./layout-default.scss"  scoped/>

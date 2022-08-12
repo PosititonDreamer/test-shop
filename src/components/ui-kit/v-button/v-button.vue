@@ -1,5 +1,5 @@
 <template>
-  <button :class="buttonClass" :type="type" @click="$emit('click')" :disabled="disabled">
+  <button :class="buttonClass" @click="$emit('click')" :disabled="loading">
     <slot />
     <div class="button__loading" v-if="loading">
       <span/>
@@ -10,26 +10,14 @@
 </template>
 <script>
 export default {
-  name: 'buttonVue',
+  name: 'v-button',
   props: {
-    type: {
-      type: String,
-      required: false,
-      default: 'submit'
-    },
     loading: {
       type: Boolean,
-      required: false,
-      default: false
-    },
-    disabled: {
-      type: Boolean,
-      required: false,
       default: false
     },
     color: {
       type: String,
-      required: false,
       default: ''
     }
 

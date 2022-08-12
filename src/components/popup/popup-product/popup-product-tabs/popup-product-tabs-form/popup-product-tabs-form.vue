@@ -9,7 +9,7 @@
         <v-rate @rate="formData.rate = $event" />
         <v-input type="text" :error-text="checkAuthor" name="Имя" v-model.trim="formData.author" @blur="formCheck.author = true" />
         <v-textarea name="Отзыв" :error-text="checkReview" v-model.trim="formData.text" @blur="formCheck.text = true"/>
-        <v-button type="submit" :disabled="loading" :loading="loading">Оставить отзыв</v-button>
+        <v-button type="submit" :loading="loading">Оставить отзыв</v-button>
       </v-form>
   </template>
   </div>
@@ -29,7 +29,7 @@ import {mapActions} from "vuex";
 import reviewPlaced from '@/assets/img/svg/popup/product/review-placed.svg'
 
 export default {
-  name: 'reviewsForm',
+  name: 'popup-product-tabs-form',
   props: {
     productId: {
       type: Number,
@@ -88,4 +88,4 @@ export default {
   }
 }
 </script>
-<style lang="scss" src="./form.scss" scoped />
+<style lang="scss" src="./popup-product-tabs-form.scss" scoped />

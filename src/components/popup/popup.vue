@@ -17,9 +17,6 @@
 // svg
 import close from '@/assets/img/svg/popup/close.svg'
 
-// css
-import 'simplebar/dist/simplebar.min.css';
-
 // component
 import simplebar from 'simplebar-vue';
 
@@ -31,7 +28,7 @@ export default {
   props: {
     title: {
       type: String,
-      require: true,
+      required: true,
     }
   },
   methods: {

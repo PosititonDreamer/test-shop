@@ -8,4 +8,4 @@ export default {
   name: 'layout-error',
 }
 </script>
-<style lang="scss" src="./error.scss" scoped />
+<style lang="scss" src="./layout-error.scss" scoped />
