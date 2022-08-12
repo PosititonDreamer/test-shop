@@ -1,5 +1,5 @@
 <template>
-    <catalog @openProduct="$emit('openProduct', $event)" />
+    <catalog />
 </template>
 <script>
 // components

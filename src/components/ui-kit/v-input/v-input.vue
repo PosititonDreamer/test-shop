@@ -1,9 +1,9 @@
 <template>
-  <div class="input-wrapper">
+  <label class="input-wrapper">
     <p class="input__name">{{name}}</p>
     <input :class="inputClass" :type="type" @input="$emit('input', $event.target.value)" @blur="$emit('blur')" :value="value">
     <span :class="errorClass" >{{errorText}}</span>
-  </div>
+  </label>
 </template>
 <script>
 export default {
@@ -29,10 +29,10 @@ export default {
   },
   computed: {
     inputClass() {
-      return ['input', {'input--error': this.errorText.length}]
+      return ['input', {'input--error': this.errorText}]
     },
     errorClass () {
-      return ['input__error', {'input__error--view': this.errorText.length}]
+      return ['input__error', {'input__error--view': this.errorText}]
     }
   }
 }

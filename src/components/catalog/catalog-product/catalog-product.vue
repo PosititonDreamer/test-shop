@@ -1,11 +1,11 @@
 <template>
   <div class="product">
-    <div class="product__image" @click="openProduct(product.id)">
+    <div class="product__image" @click="openPopup = true">
       <img :src="product.img" alt="">
     </div>
     <div class="product__content">
-      <p class="product__name" @click="openProduct(product.id)">{{product.name}}</p>
-      <strong class="product__price">{{ product.price.toLocaleString()}} ₽</strong>
+      <p class="product__name" @click="openPopup = true">{{product.name}}</p>
+      <strong class="product__price">{{ priceHelper(product.price) }}</strong>
       <v-button class="product__button" @click="updateBasket(product)" :loading="loading">
         <template v-if="product.inBasket">
           В корзине
@@ -16,20 +16,31 @@
         </template>
       </v-button>
     </div>
+    <popup title="Информация" v-if="openPopup" @closePopup="openPopup = false">
+      <popup-product :product-id="product.id" />
+    </popup>
   </div>
 </template>
 <script>
-// components
+// vuex
 import {mapActions} from "vuex";
+
+// components
+import popup from "@/components/popup/popup";
+import popupProduct from "@/components/popup/popup-product/popup-product";
 import vButton from '@/components/ui-kit/v-button/v-button'
 
 // svg
 import arrow from '@/assets/img/svg/catalog/arrow.svg'
 
+// helpers
+import priceHelper from "@/helpers/price-helper";
+
 export default {
   name: 'catalog-product',
   data: ()=> ({
-    loading: false
+    loading: false,
+    openPopup: false
   }),
   props: {
     product: {
@@ -38,29 +49,19 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['addProduct', 'removeProduct', 'productStatus']),
+    priceHelper,
+    ...mapActions(['productStatus', 'editBasket']),
     updateBasket(product) {
       this.loading = true
-      if(this.product.inBasket) {
-        this.removeProduct(product).then(()=> {
-          this.productStatus(product.id)
-        }).finally(()=> {
-          this.loading = false
-        })
-      } else {
-        this.addProduct(product).then(()=>{
-          this.productStatus(product.id)
-        }).finally(()=> {
-          this.loading = false
-        })
-      }
+      this.editBasket(product).then(()=> {
+            this.productStatus(product.id)
+          }).finally(()=> {
+        this.loading = false
+      })
     },
-    openProduct(id) {
-      this.$emit('openProduct', id)
-    }
   },
   components: {
-    vButton,arrow
+    vButton,arrow,popup ,popupProduct
   }
 }
 </script>

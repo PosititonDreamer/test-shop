@@ -1,9 +1,9 @@
 <template>
-  <div class="textarea-wrapper">
+  <label class="textarea-wrapper">
     <p class="textarea__name">{{name}}</p>
     <textarea :class="textareaClass" @input="$emit('input', $event.target.value)" @blur="$emit('blur')" :rows="rows"></textarea>
     <span :class="errorClass" >{{errorText}}</span>
-  </div>
+  </label>
 </template>
 <script>
 export default {
@@ -28,10 +28,10 @@ export default {
   },
   computed: {
     textareaClass() {
-      return ['textarea', {'textarea--error': this.errorText.length}]
+      return ['textarea', {'textarea--error': this.errorText}]
     },
     errorClass () {
-      return ['textarea__error', {'textarea__error--view': this.errorText.length}]
+      return ['textarea__error', {'textarea__error--view': this.errorText}]
     }
   }
 }

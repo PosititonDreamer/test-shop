@@ -5,7 +5,7 @@
     </div>
     <div class="product__content">
       <p class="product__name">{{ product.name }}</p>
-      <strong class="product__price">{{ product.price.toLocaleString() }} ₽</strong>
+      <strong class="product__price">{{priceHelper(product.price)}}</strong>
       <v-button color="white" @click="updateBasket(product)" :loading="loading" >убрать из корзины</v-button>
     </div>
   </div>
@@ -13,6 +13,9 @@
 <script>
 import vButton from '@/components/ui-kit/v-button/v-button'
 import {mapActions} from "vuex";
+
+// helpers
+import priceHelper from "@/helpers/price-helper";
 
 export default {
   name: 'basket-product',
@@ -26,10 +29,11 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['removeProduct', 'productStatus']),
+    priceHelper,
+    ...mapActions(['editBasket', 'productStatus']),
     updateBasket(product) {
       this.loading = true
-      this.removeProduct(product).then(() => {
+      this.editBasket(product).then(() => {
         this.productStatus(product.id)
       }).finally(() => {
         this.loading = false

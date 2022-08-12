@@ -9,21 +9,10 @@ export default {
             let basket = localStorage.getItem('basket')
             if (basket) commit('setBasket', JSON.parse(basket))
         },
-        addProduct({commit}, product) {
+        editBasket({commit}, product) {
             return new Promise((resolve) => {
                 setTimeout(() => {
-                    commit('addProduct', product)
-
-                    resolve(true)
-                }, 2000)
-
-            })
-        },
-        removeProduct({commit}, product) {
-            return new Promise((resolve) => {
-                setTimeout(() => {
-                    commit('removeProduct', product)
-
+                    commit('setProductInBasket', product)
                     resolve(true)
                 }, 2000)
 
@@ -47,22 +36,18 @@ export default {
 
         },
         clearBasket({commit}) {
-            commit('clearBasket')
+            commit('devastationBasket')
         }
     },
     mutations: {
-        addProduct(state, product) {
-            state.basket.push(product)
-            localStorage.setItem('basket', JSON.stringify(state.basket))
-        },
-        removeProduct(state, product) {
-            state.basket = state.basket.filter(item => item.id !== product.id)
+        setProductInBasket(state, product) {
+            state.basket.find(item=> item.id === product.id) ? state.basket = state.basket.filter(item=> item.id !== product.id) : state.basket.push(product)
             localStorage.setItem('basket', JSON.stringify(state.basket))
         },
         setBasket(state, data) {
             state.basket = data
         },
-        clearBasket(state) {
+        devastationBasket(state) {
             localStorage.removeItem('basket')
             this.state.catalog.products.forEach(item=> item.inBasket = false)
             state.basket = []

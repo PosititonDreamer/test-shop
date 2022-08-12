@@ -1,24 +1,11 @@
 <template>
-  <div id="app" :class="classApp">
-
-    <template v-if="loading">
-      <v-loader-dnk />
-    </template>
+  <div :class="classApp">
+    <v-loader-dnk v-if="loading" />
     <template v-else>
-      <v-header @openBasket="openPopup('popupBasket','Оформить заказ')"/>
-
-      <component
-          :is="layout"
-      >
-        <router-view @openProduct="openPopup('popupProduct', 'Информация', $event)" />
+      <v-header />
+      <component :is="layout">
+        <router-view/>
       </component>
-
-      <popup v-if="popup" @close="closePopup" :title="popupType" >
-        <component
-            :is="popup"
-            :productId="productId"
-        />
-      </popup>
     </template>
   </div>
 </template>
@@ -28,9 +15,6 @@ import {mapActions, mapGetters} from 'vuex'
 
 // components
 import vHeader from "@/components/v-header/v-header"
-import popup from "@/components/popup/popup";
-import popupProduct from '@/components/popup/popup-product/popup-product'
-import popupBasket from '@/components/popup/popup-basket/popup-basket'
 import vLoaderCircle from "@/components/ui-kit/v-loader/v-loader-circle/v-loader-circle";
 import vLoaderDnk from "@/components/ui-kit/v-loader/v-loader-dnk/v-loader-dnk";
 
@@ -42,20 +26,10 @@ import layoutError from '@/layout/layout-error/layout-error'
 export default {
   name: "app",
   data: () => ({
-    popup: null,
-    popupType: null,
-    productId: null,
     loading: true
   }),
   methods: {
-    ...mapActions(['searchData', 'searchBasket', 'searchReviews']), closePopup() {
-      this.popup = this.popupType = null
-    },
-    openPopup(name, title, id = null) {
-      this.popup = name
-      this.popupType = title
-      this.productId = id ? id : null
-    }
+    ...mapActions(['searchData', 'searchBasket', 'searchReviews']),
   },
   computed: {
     ...mapGetters(['getProducts']),
@@ -73,7 +47,7 @@ export default {
     }, 5000)
   },
   components: {
-    popup, vHeader,  popupProduct, popupBasket,layoutDefault ,layoutCatalog ,layoutError, vLoaderCircle, vLoaderDnk
+    vHeader, layoutDefault ,layoutCatalog ,layoutError, vLoaderCircle, vLoaderDnk
   }
 }
 </script>

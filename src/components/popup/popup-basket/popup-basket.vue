@@ -1,9 +1,9 @@
 <template>
   <div :class="basketClass">
     <template v-if="getBasket.length && !orderPlaced">
-        <p class="basket__name">В корзине:</p>
-        <div class="basket__list">
-          <popup-basket-product class="basket__item" v-for="product in getBasket" :product="product" :key="product.id" />
+        <p class="popup-basket__name">В корзине:</p>
+        <div class="popup-basket__list">
+          <popup-basket-product class="popup-basket__item" v-for="product in getBasket" :product="product" :key="product.id" />
         </div>
         <popup-basket-form
           @newOrder="newOrder"
@@ -37,8 +37,8 @@ export default {
   computed: {
     ...mapGetters(['getBasket']),
     basketClass() {
-      if(this.orderPlaced) return 'basket--placed'
-      return this.getBasket.length && !this.orderPlaced ? 'basket' : 'basket--empty'
+      if(this.orderPlaced) return 'popup-basket--placed'
+      return this.getBasket.length && !this.orderPlaced ? 'popup-basket' : 'popup-basket--empty'
     }
   },
   components: {

@@ -2,7 +2,7 @@
   <div class="catalog">
     <div :class="classList">
       <template v-if="productsList.length">
-        <catalog-product  v-for="product in productsList" :key="product.id" :product="product" @openProduct="$emit('openProduct', $event)"/>
+        <catalog-product  v-for="product in productsList" :key="product.id" :product="product"/>
       </template>
       <v-notification v-else text="В данной категории товаров пока нет" vImage="cart" />
     </div>
