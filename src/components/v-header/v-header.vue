@@ -2,7 +2,7 @@
   <header class="header">
     <router-link class="logo" :to="{name: 'home'}" ><logo/></router-link>
     <v-header-navigation />
-    <v-header-basket @openBasket="$emit('openBasket')" />
+    <v-header-basket />
   </header>
 </template>
 <script>
