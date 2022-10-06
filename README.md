@@ -1,9 +1,9 @@
 # shop-test
 
-...
+```
 
 node.js version 14.18.3
-...
+```
 
 
 ## Project setup
